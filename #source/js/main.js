@@ -1,14 +1,17 @@
 // ОКНО ВЫЗОВА КАТАЛОГА
-$('#header__catalog').click(function(){
+$('#header__catalog').on('click', function(e){
+	e.preventDefault();
 	$('.catalog__window').toggleClass('active');
 	$('.aside').toggleClass('index');
 	$('.product-card__btn-section').toggleClass('index');
 	$('.overlay').toggleClass('active');
+	$('body').toggleClass('lock');
 });
 $('.overlay').mouseup(function(e) {
 	var $target = $(e.target);
 	if ($target.closest(".catalog__item").length == 0) {
 		$(".catalog__window").removeClass("active");
+		$('body').removeClass('lock');
 		$(this).removeClass('active');
 	}
 });
